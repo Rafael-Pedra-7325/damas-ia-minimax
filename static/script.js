@@ -392,7 +392,7 @@
         const [x2, y2] = centroCasaSvg(caminho[i + 1]);
         const ehUltimoSegmento = i === caminho.length - 2;
 
-        const line = document.createElementNS("[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)", "line");
+        const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
         line.setAttribute("x1", x1);
         line.setAttribute("y1", y1);
         line.setAttribute("x2", x2);
@@ -430,7 +430,6 @@
       const candidatos = lancesFiltradosPorSelecao();
       const passoAtual = estado.caminhoParcial.length ? estado.caminhoParcial.length : 1;
 
-      // Verifica se clicou em uma casa intermediária de captura múltipla
       const comPassoIntermediario = candidatos.filter(
         (l) => l.caminho.length > passoAtual + 1 && l.caminho[passoAtual] === casa
       );
@@ -440,7 +439,6 @@
         return;
       }
 
-      // Verifica se clicou no destino final de algum lance válido
       const finais = candidatos.filter((l) => l.caminho[l.caminho.length - 1] === casa);
       if (finais.length >= 1) {
         executarLanceHumano(finais[0].uci);
